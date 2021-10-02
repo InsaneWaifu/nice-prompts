@@ -24,7 +24,7 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           black: true
-          auto-fix: true
+          auto_fix: true
       
       - name: Install pypa/build
         run: python -m pip install build --user
