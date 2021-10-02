@@ -2,7 +2,9 @@
 
 Generate nice looking prompts for your cli applications.
 
-[Docs](https://nice-prompts.readthedocs.io/)
+![PyPI](https://img.shields.io/pypi/v/nice-prompts?style=for-the-badge)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nice-prompts?style=for-the-badge)
+![Read the Docs](https://img.shields.io/readthedocs/nice-prompts?style=for-the-badge)
 
 Install from PyPi:
 ```bash
