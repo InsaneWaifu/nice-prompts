@@ -2,6 +2,13 @@
 
 Generate nice looking prompts for your cli applications.
 
+[Docs](https://nice-prompts.readthedocs.io/)
+
+Install from PyPi:
+```bash
+$ pip3 install nice-prompts
+```
+
 ### Demo (select 1, select at least 2 with max 2, select any amount):
 
 ```python3
@@ -24,4 +31,4 @@ print(n.multiselection({"I like pizza": "Good taste",
 
 ```
 
-![Demo]()
+![Demo](https://raw.githubusercontent.com/kuroyuki-simp/nice-prompts/master/media/demo.gif)
