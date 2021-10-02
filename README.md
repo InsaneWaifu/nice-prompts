@@ -2,8 +2,8 @@
 
 Generate nice looking prompts for your cli applications.
 
-[![PyPI](https://img.shields.io/pypi/v/nice-prompts?style=for-the-badge)](https://pypi.org/projects/nice-prompts)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nice-prompts?style=for-the-badge)](https://pypi.org/projects/nice-prompts)
+[![PyPI](https://img.shields.io/pypi/v/nice-prompts?style=for-the-badge)](https://pypi.org/project/nice-prompts)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nice-prompts?style=for-the-badge)](https://pypi.org/project/nice-prompts)
 [![Read the Docs](https://img.shields.io/readthedocs/nice-prompts?style=for-the-badge)](https://nice-prompts.readthedocs.io)
 
 Install from PyPi:
