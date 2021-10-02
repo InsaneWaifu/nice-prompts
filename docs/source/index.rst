@@ -5,4 +5,5 @@ Documentation for NicePrompts
    :caption: Contents:
    
    modules
+   readme
 
