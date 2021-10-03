@@ -257,12 +257,17 @@ class NicePrompt:
         with _.cbreak(), _.hidden_cursor():
             ret = True
             while True:
-                print(f"{_.lightgreen if ret else ''}True {_.lightgreen if not ret else _.normal}False{_.normal}{_.move_left(10)}", end='')
+                print(
+                    f"{_.lightgreen if ret else ''}True {_.lightgreen if not ret else _.normal}False{_.normal}{_.move_left(10)}",
+                    end="",
+                )
                 sys.stdout.flush()
                 val = _.inkey()
                 if val.code == 343:  # if enter key pressed
                     break
                 if val.code == 260 or val.code == 261:
-                    ret = not ret # No matter which arrow key you pressed it will still move to the other option, when there are only 2
+                    ret = (
+                        not ret
+                    )  # No matter which arrow key you pressed it will still move to the other option, when there are only 2
         print(f"{_.clear_eol}{_.lightgreen if ret else _.red}{ret}{_.normal}")
         return ret

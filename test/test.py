@@ -2,7 +2,7 @@ import nice_prompts
 
 n = nice_prompts.NicePrompt()
 
-print("Do you wish to take part in this short survey?", end=' ')
+print("Do you wish to take part in this short survey?", end=" ")
 
 print(n.confirm())
 
