@@ -34,9 +34,9 @@ class NicePrompt:
         # Print out all the options, selected option has an arrow
         for c, i in enumerate(options.keys()):
             if c == selected:
-                print(f"{_.lightgreen} 🭬 {_.normal}{i}")
+                print(f"{_.lightgreen} 🭬 {_.normal}{i}{" " * _.width-(len(i)+5)}")
             else:
-                print(f" ◦ {i}")
+                print(f" ◦ {i}{" " * _.width-(len(i)+5)}")
 
         with _.cbreak(), _.hidden_cursor():
             while True:
@@ -65,9 +65,9 @@ class NicePrompt:
                 # Print out all the options, selected option has an arrow
                 for c, i in enumerate(options.keys()):
                     if c == selected:
-                        print(f"{_.lightgreen} 🭬 {_.normal}{i}")
+                        print(f"{_.lightgreen} 🭬 {_.normal}{i}{" " * _.width-(len(i)+5)}")
                     else:
-                        print(f" ◦ {i}")
+                        print(f" ◦ {i}{" " * _.width-(len(i)+5)}")
 
         for i in range(len(options) + 1):  # Clear the options list to tidy up terminal
             print(f"{_.move_up}{_.clear_eol}{_.move_up}")
@@ -120,13 +120,13 @@ class NicePrompt:
             print(f"Press space to choose an option, enter to finish. Selected {a}")
             for c, i in enumerate(options.keys()):
                 if c == selected and c in chosen:
-                    print(f"{_.lightgreen} 🭬 {i}{_.normal}")
+                    print(f"{_.lightgreen} 🭬 {i}{_.normal}{" " * _.width-(len(i)+5)}")
                 elif c == selected:
-                    print(f"{_.lightgreen} 🭬 {_.normal}{i}")
+                    print(f"{_.lightgreen} 🭬 {_.normal}{i}{" " * _.width-(len(i)+5)}")
                 elif c in chosen:
-                    print(f"{_.lightgreen} • {i}{_.normal}")
+                    print(f"{_.lightgreen} • {i}{_.normal}{" " * _.width-(len(i)+5)}")
                 else:
-                    print(f" ◦ {i}")
+                    print(f" ◦ {i}{" " * _.width-(len(i)+5)}")
 
             p = _.move_up(len(options) + 1)
 
