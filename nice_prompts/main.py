@@ -32,11 +32,15 @@ class NicePrompt:
         selected = 0
 
         # Print out all the options, selected option has an arrow
+        
+
         for c, i in enumerate(options.keys()):
             if c == selected:
-                print(f"{_.lightgreen} 🭬 {_.normal}{i}{" " * _.width-(len(i)+5)}")
+                filler = " " *( _.width - (len(i)+5))
+                print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
             else:
-                print(f" ◦ {i}{" " * _.width-(len(i)+5)}")
+                filler = " " *( _.width - (len(i)+5))
+                print(f" ◦ {i}{filler}")
 
         with _.cbreak(), _.hidden_cursor():
             while True:
@@ -62,12 +66,15 @@ class NicePrompt:
                 print(p, end="")
                 sys.stdout.flush()
 
+                
                 # Print out all the options, selected option has an arrow
                 for c, i in enumerate(options.keys()):
                     if c == selected:
-                        print(f"{_.lightgreen} 🭬 {_.normal}{i}{" " * _.width-(len(i)+5)}")
+                        filler = " " *( _.width - (len(i)+5))
+                        print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
                     else:
-                        print(f" ◦ {i}{" " * _.width-(len(i)+5)}")
+                        filler = " " *( _.width - (len(i)+5))
+                        print(f" ◦ {i}{filler}")
 
         for i in range(len(options) + 1):  # Clear the options list to tidy up terminal
             print(f"{_.move_up}{_.clear_eol}{_.move_up}")
@@ -120,13 +127,17 @@ class NicePrompt:
             print(f"Press space to choose an option, enter to finish. Selected {a}")
             for c, i in enumerate(options.keys()):
                 if c == selected and c in chosen:
-                    print(f"{_.lightgreen} 🭬 {i}{_.normal}{" " * _.width-(len(i)+5)}")
+                    filler = " " *( _.width - (len(i)+5))
+                    print(f"{_.lightgreen} 🭬 {i}{_.normal}{filler}")
                 elif c == selected:
-                    print(f"{_.lightgreen} 🭬 {_.normal}{i}{" " * _.width-(len(i)+5)}")
+                    filler = " " *( _.width - (len(i)+5))
+                    print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
                 elif c in chosen:
-                    print(f"{_.lightgreen} • {i}{_.normal}{" " * _.width-(len(i)+5)}")
+                    filler = " " *( _.width - (len(i)+5))
+                    print(f"{_.lightgreen} • {i}{_.normal}{filler}")
                 else:
-                    print(f" ◦ {i}{" " * _.width-(len(i)+5)}")
+                    filler = " " *( _.width - (len(i)+5))
+                    print(f" ◦ {i}{filler}")
 
             p = _.move_up(len(options) + 1)
 
