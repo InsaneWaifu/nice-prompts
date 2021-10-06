@@ -10,6 +10,8 @@ print(n.number(float, 0, 1))
 
 print(n.number(int, 0, 100))
 
+print(n.number(int, 10))
+
 print(
     n.selection(
         {

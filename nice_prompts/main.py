@@ -32,14 +32,13 @@ class NicePrompt:
         selected = 0
 
         # Print out all the options, selected option has an arrow
-        
 
         for c, i in enumerate(options.keys()):
             if c == selected:
-                filler = " " *( _.width - (len(i)+5))
+                filler = " " * (_.width - (len(i) + 5))
                 print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
             else:
-                filler = " " *( _.width - (len(i)+5))
+                filler = " " * (_.width - (len(i) + 5))
                 print(f" ◦ {i}{filler}")
 
         with _.cbreak(), _.hidden_cursor():
@@ -66,14 +65,13 @@ class NicePrompt:
                 print(p, end="")
                 sys.stdout.flush()
 
-                
                 # Print out all the options, selected option has an arrow
                 for c, i in enumerate(options.keys()):
                     if c == selected:
-                        filler = " " *( _.width - (len(i)+5))
+                        filler = " " * (_.width - (len(i) + 5))
                         print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
                     else:
-                        filler = " " *( _.width - (len(i)+5))
+                        filler = " " * (_.width - (len(i) + 5))
                         print(f" ◦ {i}{filler}")
 
         for i in range(len(options) + 1):  # Clear the options list to tidy up terminal
@@ -127,16 +125,16 @@ class NicePrompt:
             print(f"Press space to choose an option, enter to finish. Selected {a}")
             for c, i in enumerate(options.keys()):
                 if c == selected and c in chosen:
-                    filler = " " *( _.width - (len(i)+5))
+                    filler = " " * (_.width - (len(i) + 5))
                     print(f"{_.lightgreen} 🭬 {i}{_.normal}{filler}")
                 elif c == selected:
-                    filler = " " *( _.width - (len(i)+5))
+                    filler = " " * (_.width - (len(i) + 5))
                     print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
                 elif c in chosen:
-                    filler = " " *( _.width - (len(i)+5))
+                    filler = " " * (_.width - (len(i) + 5))
                     print(f"{_.lightgreen} • {i}{_.normal}{filler}")
                 else:
-                    filler = " " *( _.width - (len(i)+5))
+                    filler = " " * (_.width - (len(i) + 5))
                     print(f" ◦ {i}{filler}")
 
             p = _.move_up(len(options) + 1)
@@ -184,8 +182,8 @@ class NicePrompt:
 
         return [options[list(options.keys())[i]] for i in chosen]
 
-    def number(self, number_type, start=0, end=0):
-        """The suer can enter a number with optional bounds
+    def number(self, number_type, start=None, end=None):
+        """The user can enter a number with optional bounds
 
         Args:
             number_type (class): The class of the number you want the user to enter. e.g. int float
@@ -198,8 +196,13 @@ class NicePrompt:
 
         with _.cbreak():
             fromstr = ""
-            if start != 0 or end != 0:  # if bounds were specified
-                fromstr = f" from {start} to {end}"
+            if start != None or end != None:  # if bounds were specified
+                if start != None and end != None:
+                    fromstr = f" from {start} to {end}"
+                elif start != None:
+                    fromstr = f" starting from {start}"
+                else:
+                    fromstr = f" up to {end}"
             # make a prompt
             prompt = f"Please enter a {_.bright_yellow}{str(number_type.__name__)}{_.normal}{fromstr}."
             print(prompt)
@@ -241,18 +244,24 @@ class NicePrompt:
                         # cast the input to the specified type and return
                         return number_type(num)
                 # if the inputted character is a digit or a dot
-                elif val in list(string.digits + ".") and len(num) < _.width:
+                elif val in list(string.digits + ".-") and len(num) < _.width:
                     # add it at the cursor position
                     num = num[:csr] + val + num[csr:]
                     csr += 1  # move the cursor forward
                 try:
                     i = number_type(num)  # cast the input to the desired type
-                    if start == 0 and end == 0:  # if there are no bounds
+                    if start == None and end == None:  # if there are no bounds
                         valid = True
-                    elif i >= start and i <= end:  # if the number is within bounds
-                        valid = True
-                    else:  # it is not within bounds
-                        valid = False
+                        print("nobounds\n")
+                    else:
+                        if start != None and end != None and i >= start and i <= end:
+                            valid = True
+                        elif start != None and end == None and i >= start:
+                            valid = True
+                        elif end != None and start == None and i <= end:
+                            valid = True
+                        else:
+                            valid = False
                 except:  # the input couldn't be casted
                     valid = False
                 # print the inputted number out and move the terminal cursor to its correct position
