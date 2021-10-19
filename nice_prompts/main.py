@@ -182,13 +182,15 @@ class NicePrompt:
 
         return [options[list(options.keys())[i]] for i in chosen]
 
-    def number(self, number_type, start=None, end=None):
+    def number(self, number_type, start=None, end=None, check=lambda x: True):
         """The user can enter a number with optional bounds
 
         Args:
             number_type (class): The class of the number you want the user to enter. e.g. int float
             start (int, optional): The minimum number the user can enter. Leave out for no minimum
             end (int, optional): The maximum number the user can enter. Leave out for no maximum
+            check (function, optional): A function that will be passed the number. Should return true or false, which will
+                be used to check if the entered number is valid. You can use this for extra checks e.g. prime numbers
         Returns:
             type(number_type): The number the user entered
         """
@@ -250,18 +252,20 @@ class NicePrompt:
                     csr += 1  # move the cursor forward
                 try:
                     i = number_type(num)  # cast the input to the desired type
-                    if start == None and end == None:  # if there are no bounds
-                        valid = True
-                        print("nobounds\n")
-                    else:
-                        if start != None and end != None and i >= start and i <= end:
-                            valid = True
-                        elif start != None and end == None and i >= start:
-                            valid = True
-                        elif end != None and start == None and i <= end:
+                    if check(i):
+                        if start == None and end == None:  # if there are no bounds
                             valid = True
                         else:
-                            valid = False
+                            if start != None and end != None and i >= start and i <= end:
+                                valid = True
+                            elif start != None and end == None and i >= start:
+                                valid = True
+                            elif end != None and start == None and i <= end:
+                                valid = True
+                            else:
+                                valid = False
+                    else:
+                        valid = False
                 except:  # the input couldn't be casted
                     valid = False
                 # print the inputted number out and move the terminal cursor to its correct position
