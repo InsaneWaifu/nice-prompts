@@ -256,7 +256,12 @@ class NicePrompt:
                         if start == None and end == None:  # if there are no bounds
                             valid = True
                         else:
-                            if start != None and end != None and i >= start and i <= end:
+                            if (
+                                start != None
+                                and end != None
+                                and i >= start
+                                and i <= end
+                            ):
                                 valid = True
                             elif start != None and end == None and i >= start:
                                 valid = True
