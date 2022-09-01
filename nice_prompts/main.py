@@ -36,7 +36,7 @@ class NicePrompt:
         for c, i in enumerate(options.keys()):
             if c == selected:
                 filler = " " * (_.width - (len(i) + 5))
-                print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
+                print(f"{_.lightgreen} > {_.normal}{i}{filler}")
             else:
                 filler = " " * (_.width - (len(i) + 5))
                 print(f" ◦ {i}{filler}")
@@ -69,7 +69,7 @@ class NicePrompt:
                 for c, i in enumerate(options.keys()):
                     if c == selected:
                         filler = " " * (_.width - (len(i) + 5))
-                        print(f"{_.lightgreen} 🭬 {_.normal}{i}{filler}")
+                        print(f"{_.lightgreen} > {_.normal}{i}{filler}")
                     else:
                         filler = " " * (_.width - (len(i) + 5))
                         print(f" ◦ {i}{filler}")
